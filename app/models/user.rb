@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  attr_accessor :forecast
+
   before_save { email.downcase! }
   validates :name,  presence: true, length: { maximum: 50 }
 

@@ -1,7 +1,18 @@
 <h1><%= @user.name %></h1>
 
-<h3><%= @user.email %></h3>
+<center><%= @user.email %></center>
 
-
-<span>Station Selections</span>
 <hr />
+<span>Station Selections</span>
+<br />
+
+
+<span><%= @user.forecast["current_observation"]["display_location"]["full"] %><br />
+<span><%= @user.forecast["current_observation"]["temperature_string"] %><br />
+<span><%= @user.forecast["current_observation"]["wind_string"] %><br />
+<span><%= image_tag(@user.forecast["current_observation"]["icon_url"]) %>
+
+
+
+
+<!-- forcast_for ["forecast"]["txt_forecast"]["forecastday"][0]["fcttext"] -->
