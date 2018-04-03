@@ -2,8 +2,10 @@ module UsersHelper
 
   def get_forecast
     w_api = Wunderground.new("dda1e42fba07eb1c")
-
-    @user.forecast =   w_api.conditions_for("pws:KCASQUAW9")
+    puts w_api
+    @user.forecast =   w_api.conditions_for("pws:#{@user.stations}")
+    puts '***** fuck yeah ******'
+    puts @user
   end
 end
 

@@ -1,5 +1,7 @@
 class User < ApplicationRecord
 
+  has_many :stations
+
   attr_accessor :forecast
 
   before_save { email.downcase! }
@@ -12,5 +14,12 @@ class User < ApplicationRecord
 
   has_secure_password
   validates :password, presence: true, length: { minimum: 6 }
+
+
+
+  # def add_station(callsign)
+  #   update_attributes station: self.station + [ callsign ]
+  # end
+
 
 end

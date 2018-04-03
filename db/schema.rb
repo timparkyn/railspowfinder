@@ -10,9 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180327225549) do
+ActiveRecord::Schema.define(version: 20180402215910) do
 
-# Could not dump table "users" because of following StandardError
-#   Unknown type 'array' for column 'selected'
+  create_table "stations", force: :cascade do |t|
+    t.string "code"
+    t.string "description"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id", "created_at"], name: "index_stations_on_user_id_and_created_at"
+    t.index ["user_id"], name: "index_stations_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "name"
+    t.string "email"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "password_digest"
+    t.index ["email"], name: "index_users_on_email", unique: true
+  end
 
 end

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
 
+  resources :stations
   get 'session/new'
 
   root 'static_pages#home'

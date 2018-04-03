@@ -7,12 +7,22 @@
 <br />
 
 
-<span><%= @user.forecast["current_observation"]["display_location"]["full"] %><br />
-<span><%= @user.forecast["current_observation"]["temperature_string"] %><br />
-<span><%= @user.forecast["current_observation"]["wind_string"] %><br />
-<span><%= image_tag(@user.forecast["current_observation"]["icon_url"]) %>
+
+  <%= form_for(@user) do |f| %>
+
+      <%= render 'shared/error_messages', object: @user %>
+
+      <%= f.label "Add station" %>
+      <%= f.text_field :stations, class: 'form-control' %>
+
+      <%= f.submit " Enter Station ", class: "btn btn-primary" %>
+
+  <% end %>
 
 
 
+  <% @user.stations.each do |station| %>
+    <span>Station: <%= station.code %> - <%= station.description %></span>
+    <br />
 
-<!-- forcast_for ["forecast"]["txt_forecast"]["forecastday"][0]["fcttext"] -->
+  <% end %>
