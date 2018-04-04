@@ -1,13 +1,24 @@
+require 'json'
+
 module UsersHelper
 
-  def get_forecast
+  def get_forecast(stations)
     w_api = Wunderground.new("dda1e42fba07eb1c")
-    puts w_api
-    @user.forecast =   w_api.conditions_for("pws:#{@user.stations}")
-    puts '***** fuck yeah ******'
-    puts @user
+    @user.forecast = [];
+    stations.each do |station|
+        puts station
+      @user.forecast.push(w_api.forecast_and_conditions_for("pws:#{station.code}"))
+    end
+
+    if @user.forecast
+      puts @user.forecast.length
+    end
+
   end
 end
+
+
+
 
 
 

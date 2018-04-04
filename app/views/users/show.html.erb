@@ -8,21 +8,7 @@
 
 
 
-  <%= form_for(@user) do |f| %>
-
-      <%= render 'shared/error_messages', object: @user %>
-
-      <%= f.label "Add station" %>
-      <%= f.text_field :stations, class: 'form-control' %>
-
-      <%= f.submit " Enter Station ", class: "btn btn-primary" %>
-
-  <% end %>
+<hr />
 
 
-
-  <% @user.stations.each do |station| %>
-    <span>Station: <%= station.code %> - <%= station.description %></span>
-    <br />
-
-  <% end %>
+  <%= render 'weatherDisplay' %>

@@ -1,0 +1,23 @@
+<% @user.forecast.each do |fcast| %>
+
+
+<div class='forecastBox'>
+  <span>Conditions for <%= fcast['current_observation']['display_location']['full'] %>&nbsp—&nbsp<%= fcast['current_observation']['observation_location']['elevation'] %></span><br />
+  <span><%= fcast['current_observation']['observation_time'] %></span><br />
+  <div class='iconWindow'>
+    <span><%= image_tag (fcast['current_observation']['icon_url']) %></span><br />
+    <span>POP: <%= fcast['forecast']['txt_forecast']['forecastday'][0]['pop'] %>%</span><br />
+    <span>QPF: <%= fcast['forecast']['simpleforecast']['forecastday'][0]['qpf_allday']['in'] %></span><br />
+    <span>QSF: <%= fcast['forecast']['simpleforecast']['forecastday'][0]['snow_allday']['in']  %></span>
+  </div>
+  <div class='forecastWindow'>
+    <span>Temp: <%= fcast['current_observation']['temp_f'] %>°F</span>
+    <span>Winds: <%= fcast['current_observation']['wind_string'] %></span><br />
+    <span>Precip (today/1hr): <%= fcast['current_observation']['precip_today_in'] %></span>
+    <span><%= fcast['current_observation']['precip_1hr_in'] %></span><br />
+
+    <span><%= fcast['forecast']['txt_forecast']['forecastday'][0]['fcttext'] %></span><br />
+  </div>
+</div>
+
+<% end %>

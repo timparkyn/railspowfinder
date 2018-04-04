@@ -1,10 +1,13 @@
 class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
+  attr_accessor :stations
+
   # GET /stations
   # GET /stations.json
   def index
     @stations = Station.all
+    puts '* * * * * poopy * * * * *'
   end
 
   # GET /stations/1
@@ -24,7 +27,7 @@ class StationsController < ApplicationController
   # POST /stations
   # POST /stations.json
   def create
-    @station = Station.new(station_params)
+    @station = Station.new(user_id: @user.id)
 
     respond_to do |format|
       if @station.save
