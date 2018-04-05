@@ -5,11 +5,15 @@ module UsersHelper
   def get_forecast(stations)
     w_api = Wunderground.new("dda1e42fba07eb1c")
     @user.forecast = [];
+
+    # user forecast is an array of forecasts
     stations.each do |station|
         puts station
       @user.forecast.push(w_api.forecast_and_conditions_for("pws:#{station.code}"))
     end
 
+
+# quick check
     if @user.forecast
       puts @user.forecast.length
     end

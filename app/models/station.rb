@@ -1,8 +1,9 @@
 class Station < ApplicationRecord
 
-  belongs_to  :user
+  has_many :selections
+  has_many :users, :through => :selections
 
-    validates :code, presence: true
-    validates :user_id, presence: true
+  validates :code, presence: true
+  validates :user_id, presence: true
 
 end

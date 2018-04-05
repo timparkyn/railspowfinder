@@ -1,6 +1,7 @@
 class User < ApplicationRecord
 
-  has_many :stations
+  has_many :selections
+  has_many :stations, :through => :selections
 
   attr_accessor :forecast
 
