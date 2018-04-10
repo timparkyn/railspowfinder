@@ -1,0 +1,3 @@
+<% @stations.each do |station| %>
+  <span><%= link_to ("#{station.code} - #{station.description}", selection_path) %></span>
+<% end %>

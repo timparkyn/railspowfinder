@@ -1,0 +1,11 @@
+
+
+
+<%= form_for(@user) do |f| %>
+
+    <%= f.collection_check_boxes(:station_ids, Station.all, :code, :description) do |stn| %>
+      <%= stn.label { stn.check_box } %>
+    <% end %>
+
+      <%= f.submit ("Add station")%>
+<% end %>

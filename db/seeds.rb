@@ -17,3 +17,13 @@ station_list = [
 station_list.each do |code, name|
   Station.create( code: code, name: name )
 end
+
+
+user_list = [
+  [ 'psy', 'psy@dog.net', 'woofwoof', 'woofwoof']
+  [ 'CyCy', 'CyCy@dog.net', 'woofwoof', 'woofwoof']
+]
+
+user_list.each do |name, email, password, password_confirmation|
+  User.create(name: name, email: email, password: password, password_confirmation: password_confirmation)
+end

@@ -2,32 +2,30 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   attr_accessor :stations
+  include StationsHelper
 
-  # GET /stations
-  # GET /stations.json
   def index
-    @stations = Station.all
-    puts '* * * * * poopy * * * * *'
+    @stations = current_user.stations
+    
+    puts '*' * 10
+    puts @stations
+    get_forecast(@stations)
   end
 
-  # GET /stations/1
-  # GET /stations/1.json
   def show
   end
 
-  # GET /stations/new
+
   def new
     @station = Station.new
   end
 
-  # GET /stations/1/edit
+
   def edit
   end
 
-  # POST /stations
-  # POST /stations.json
   def create
-    @station = Station.new(user_id: @user.id)
+    @station = Station.new
 
     respond_to do |format|
       if @station.save

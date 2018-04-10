@@ -2,7 +2,8 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    get_forecast(@user.stations)
+    # @stations = Station.all
+    
   end
 
 
@@ -14,7 +15,6 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      flash[:success] = "fuckyeah"
       redirect_to @user
     else
       render 'new'
@@ -43,6 +43,10 @@ class UsersController < ApplicationController
   end
 
 
+  def selections
+    @user = User.find(params[:id])
+    render 'stations'
+  end
 
 
 
@@ -50,6 +54,7 @@ class UsersController < ApplicationController
 
     def user_params
       params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:date, selections: [])
     end
 
 

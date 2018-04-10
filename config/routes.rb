@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
 
 
-  resources :stations
+
+
   get 'session/new'
 
   root 'static_pages#home'
@@ -19,7 +20,13 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
 
 
-  resources :users
+  resources :users do
+    member do
+      get :selections
+    end
+
+    resources :stations, only: [:index]
+  end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
