@@ -6,10 +6,8 @@ class StationsController < ApplicationController
 
   def index
     @stations = current_user.stations
-    
-    puts '*' * 10
-    puts @stations
     get_forecast(@stations)
+    @unselected_stations = Station.all - @stations
   end
 
   def show
