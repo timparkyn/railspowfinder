@@ -1,4 +1,23 @@
+include SelectionsHelper
+
 class SelectionsController < ApplicationController
+
+  def index
+    @selections = current_user.selections
+    get_forecast(@selections)
+    @unselected_stations = Station.all - @selections
+  end
+
+  def show
+  end
+
+
+  def new
+    @selection = Station.new
+  end
+
+  def end
+  end
 
   def create
     station = Station.find(selection_params[:id])
