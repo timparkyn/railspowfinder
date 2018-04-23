@@ -4,6 +4,8 @@ class StationsController < ApplicationController
   attr_accessor :stations
 
 
+  # FIXME restrict controller for Admin only
+
   def index
     @stations = Station.all
   end

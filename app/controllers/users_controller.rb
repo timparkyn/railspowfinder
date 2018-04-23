@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  #restrict for admin only
+  # FIXME: restrict for admin only
   def index
     @user = User.all
   end
