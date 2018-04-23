@@ -1,11 +1,13 @@
 class UsersController < ApplicationController
 
-  def show
-    @user = User.find(params[:id])
-    # @stations = Station.all
-
+  #restrict for admin only
+  def index
+    @user = User.all
   end
 
+  def show
+    @user = User.find(params[:id])
+  end
 
   def new
     @user = User.new

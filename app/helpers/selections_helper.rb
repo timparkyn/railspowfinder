@@ -21,7 +21,9 @@ module SelectionsHelper
 
       forecast['observations'] = response.current_observation
       # convert from metric to imperial, round up, drop any float
-      forecast['elevation'] = (forecast['observations'].display_location.elevation.to_i * 3.28084).round
+      # forecast['elevation'] = (forecast['observations'].display_location.elevation.to_i * 3.28084).round
+      forecast['elevation'] = forecast['observations'].observation_location.elevation
+
 
       daily_forecasts = response.forecast.simpleforecast.forecastday
       forecast['dailyFx'] = {}
