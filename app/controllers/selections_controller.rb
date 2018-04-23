@@ -36,6 +36,7 @@ class SelectionsController < ApplicationController
 
   private
 
+  # FIXME  review and fix as needed
   # def selection_params
   #   params.require(:station).permit(:id)
   # end
