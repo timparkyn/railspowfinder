@@ -1,17 +1,8 @@
 <div class="card-deck">
   <% @forecasts.each do |fcast| %>
-    <!-- button_to('Remove', user_selections_path(current_user.id, fcast[:id]), method: :delete)  -->
-    <%= fcast[:selection_id] %>
 
     <div class="card card-body forecastBox col-md-5 col-sm-5 col-xs-4">
       <%= button_to('Remove', user_selection_path(:id => fcast[:selection_id]), {method: :delete} ) %>
-       <!-- button_to('Remove', fcast[:selection_id], {method: :delete} )   -->
-      <!-- button_to('Remove', user_selections_path, {method: :delete} )  -->
-      <!-- {station: {id: fcast[:id]}}       ({station: {id: fcast[:id]}})-->
-      <!-- controller => :selections -->
-
-      <!-- controller => fcast.id -->
-      <!-- button_to('Remove', user_selections_path, {:action => 'destroy'}, {:id => :selection_id} , {method: :delete} ) -->
 
       <h4 class='card-title'>
         <%= fcast['observations'].display_location.full %>&nbsp—&nbsp<%= fcast['observations'].station_id %><br />
