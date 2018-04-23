@@ -5,16 +5,16 @@
       <%= button_to('Remove', user_selection_path(:id => fcast[:selection_id]), {method: :delete} ) %>
 
       <h5 class='card-title'>
-        <%= fcast['description'] %><br />
-        <%= (fcast['elevation']) %>
+        <%= fcast[:description] %><br />
+        <%= fcast[:elevation] %>
       </h5>
 
       <div class="card-text small">
-        <%= (fcast['observations'].observation_time_rfc822) %><br />
-        <span>Temp: <%= fcast['observations'].temp_f %>°F</span><br />
-        <span>Winds: <%= fcast['observations'].wind_string %></span><br />
-        <span>Precip (today/1hr): <%= fcast['observations'].precip_today_in %></span>
-        <span><%= fcast['observations'].precip_1hr_in %></span><br />
+        <%= (fcast[:observations].observation_time_rfc822) %><br />
+        <span>Temp: <%= fcast[:observations].temp_f %>°F</span><br />
+        <span>Winds: <%= fcast[:observations].wind_string %></span><br />
+        <span>Precip (today/1hr): <%= fcast[:observations].precip_today_in %></span>
+        <span><%= fcast[:observations].precip_1hr_in %></span><br />
       </div>
         <br />
         <div class="table-responsive-sm">
@@ -31,11 +31,11 @@
           </thead>
             <% (0..3).each do |n| %>
               <tr>
-                <th><%= fcast['dailyFx']['day'][n] %></th>
-                <td><%= fcast['dailyFx']['pop'][n] %></td>
-                <td><%= fcast['dailyFx']['qpf'][n] %></td>
-                <td><%= fcast['dailyFx']['snowIn'][n]  %></td>
-                <td><%= fcast['dailyFx']['maxwindMph'][n]  %></td>
+                <th><%= fcast[:daily_fx][:day][n] %></th>
+                <td><%= fcast[:daily_fx][:pop][n] %></td>
+                <td><%= fcast[:daily_fx][:qpf][n] %></td>
+                <td><%= fcast[:daily_fx][:snow_in][n]  %></td>
+                <td><%= fcast[:daily_fx][:max_wind_mph][n]  %></td>
               </tr>
             <% end %>
         </table>

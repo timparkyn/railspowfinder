@@ -3,10 +3,13 @@ include SelectionsHelper
 class SelectionsController < ApplicationController
 
   def index
+    #provides an array of station objects
     @selections = current_user.stations
+    @forecasts = []
     get_forecast(@selections)
-    # update list of available stations for user
+    # updates list of available stations for user
     @unselected_stations = Station.all - @selections
+
   end
 
   def show
