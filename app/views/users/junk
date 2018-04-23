@@ -1,3 +1,17 @@
+<!-- <div class='statWindow'>
+  <% (0..3).each do |n|%>
+    <div class='statTable'>
+      <span> <%= fcast['dailyFx']['day'][n] %></span><br />
+      <span>POP: <%= fcast['dailyFx']['pop'][n] %></span><br />
+      <span>QPF: <%= fcast['dailyFx']['qpf'][n] %></span><br />
+      <span>QSF: <%= fcast['dailyFx']['snowIn'][n]  %></span><br />
+      <span>MaxWind: <%= fcast['dailyFx']['maxwindMph'][n]  %></span>
+    </div>
+  <% end %>
+</div> -->
+
+
+
 <!-- <span><%= @user.forecast["current_observation"]["observation_location"]["city"] %><br />
 
 <span><%= @user.forecast["current_observation"]["temperature_string"] %><br />
@@ -27,3 +41,54 @@
     <%= f.submit " Enter Station ", class: "btn btn-primary" %>
 
 <% end %>
+---------------------
+<%= form_for @user do |f| %>
+  <%= f.fields_for :selections do |s| %>
+
+      <%= f.select :station_ids, Station.all.collect {|x| [x.code, x.description, x.id]}, {}, :multiple => true %>
+
+  <% end %>
+  <%= f.submit ("Add station")%>
+<% end %>
+----------------------
+
+<%= form.select(:selections, Station.all.collect {|s| [s.description, s.id]}, {}, {multiple: true}) %>
+
+
+
+
+<%= st.select("selection",
+options_from_collection_for_select(Station.all, "code", "description")) %>
+
+  <%= s.fields_for :stations do |st| %>
+
+
+<% @user.stations.each do |station| %>
+  <span>Station: <%= station.code %> - <%= station.description %></span>
+  <br />
+
+<% end %>
+
+
+
+
+
+
+<div class='forecastBox'>
+  <span>Conditions for <%= fcast.current_observation.observation_location.display_location.full %>&nbsp—&nbsp<%= fcast.current_observation.observation_location.elevation %></span><br />
+  <span><%= fcast.current_observation.observation_time %></span><br />
+  <div class='iconWindow'>
+    <span><%= image_tag (fcast.current_observation.icon_url) %></span><br />
+    <span>POP: <%= fcast.txt_forecast.forecastday[0].pop %>%</span><br />
+    <span>QPF: <%= fcast.simpleforecast.forecastday[0].qpf_allday.in %></span><br />
+    <span>QSF: <%= fcast.simpleforecast.forecastday[0].snow_allday.in  %></span>
+  </div>
+  <div class='forecastWindow'>
+    <span>Temp: <%= fcast.forecast.temp_f %>°F</span>
+    <span>Winds: <%= fcast.forecast.wind_string %></span><br />
+    <span>Precip (today/1hr): <%= fcast.forecast.precip_today_in %></span>
+    <span><%= fcast.forecast.precip_1hr_in %></span><br />
+
+    <span><%= fcast.forecast.txt_forecast.forecastday[0].fcttext %></span><br />
+  </div>
+</div>
