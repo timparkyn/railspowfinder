@@ -1,17 +1,3 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Dashboard</h1>
-
-<span><%= current_user.email %></span>
-  <div class="col-md-6">
-    <% @unselected_stations.each do |unselected_station| %>
-        <%= unselected_station.code %>
-        <div >
-          <%= button_to('Add', user_selections_path(station: {id: unselected_station.id})) %>
-        </div>
-    <% end %>
-  </div>
-
-
-
-<%= render 'weatherDisplay' %>
+<h1>stations#index</h1>

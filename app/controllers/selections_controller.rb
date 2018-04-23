@@ -4,11 +4,8 @@ class SelectionsController < ApplicationController
 
   def index
     @selections = current_user.stations
-    puts '* * ** * * ** * * ** * **'
-    puts @selections
     get_forecast(@selections)
-
-    # why doesnt this work?
+    # update list of available stations for user
     @unselected_stations = Station.all - @selections
   end
 
