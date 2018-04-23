@@ -2,12 +2,10 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   attr_accessor :stations
-  include StationsHelper
+
 
   def index
-    @stations = current_user.stations
-    get_forecast(@stations)
-    @unselected_stations = Station.all - @stations
+    @stations = Station.all
   end
 
   def show
