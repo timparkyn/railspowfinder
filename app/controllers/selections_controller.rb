@@ -5,6 +5,8 @@ class SelectionsController < ApplicationController
   def index
     @selections = current_user.selections
     get_forecast(@selections)
+
+    # why doesnt this work?
     @unselected_stations = Station.all - @selections
   end
 
@@ -13,28 +15,34 @@ class SelectionsController < ApplicationController
 
 
   def new
-    @selection = Station.new
+    @selection = Selection.new
   end
 
   def end
   end
 
   def create
-    station = Station.find(selection_params[:id])
+    puts '* * * * * * * * * *'
+    puts params
+    station = Station.find(params[:id])
     Selection.find_or_create_by(user_id: current_user.id, station_id: station.id)
-    redirect_to user_path
+    redirect_to user_selections_path
   end
 
   def destroy
-    Selection.find(selection_params[:id]).destroy
-    # [:selection_id]
-    redirect_to user_path
+    puts '------------------------------'
+    # station = Station.find(selection_params[:id])
+    puts params
+    # puts Selection.find(user_id: current_user.id, station_id: station.id)
+    # Selection.find_by(user_id: current_user.id, station_id: station.id).destroy
+    Selection.find(params[:id]).destroy
+    redirect_to user_selections_path
   end
 
   private
 
-  def selection_params
-    params.require(:station).permit(:id)
-  end
+  # def selection_params
+  #   params.require(:station).permit(:id)
+  # end
 
 end

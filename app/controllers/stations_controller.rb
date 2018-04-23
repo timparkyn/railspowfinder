@@ -36,8 +36,7 @@ class StationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stations/1
-  # PATCH/PUT /stations/1.json
+
   def update
     respond_to do |format|
       if @station.update(station_params)
@@ -50,8 +49,7 @@ class StationsController < ApplicationController
     end
   end
 
-  # DELETE /stations/1
-  # DELETE /stations/1.json
+
   def destroy
     @station.destroy
     respond_to do |format|
