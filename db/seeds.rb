@@ -10,24 +10,17 @@
 
 station_list = [
   [ "KCASQUAW9", "Squaw Valley base" ],
-  [ "KCAOAKLA40", "Oakland Hilltop" ],
-  [ "KCASODA49", "SugarBowl - Serene Lakes"],
-  [ "KCATRUCK149", "Northstar - Martis Camp"],
-  [ "KNVRENO352", "Mt. Rose - Tannenbaum"],
-  [ "KNVGLENB14", "Heavenly - Kingsbury Estates"],
-  [ "KCASOUTH70", "Heavenly - Montgomery Estates"],
-  [ "KCATWINB4", "Sierra At Tahoe"],
-  [ "KCAKIRKW4", "Kirkwood Valley"]
+  [ "KCAOAKLA40", "Oakland Hilltop" ]
 
 ]
 
-station_list.each do |code, desc|
-  Station.create( code: code, description: desc )
+station_list.each do |code, name|
+  Station.create( code: code, name: name )
 end
 
 
 user_list = [
-  [ 'psy', 'psy@dog.net', 'woofwoof', 'woofwoof'],
+  [ 'psy', 'psy@dog.net', 'woofwoof', 'woofwoof']
   [ 'CyCy', 'CyCy@dog.net', 'woofwoof', 'woofwoof']
 ]
 

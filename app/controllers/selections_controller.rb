@@ -1,40 +1,18 @@
-include SelectionsHelper
-
 class SelectionsController < ApplicationController
 
-  def index
-    @selections = current_user.stations
-    get_forecast(@selections)
-    # update list of available stations for user
-    @unselected_stations = Station.all - @selections
+  def add
+    @user = User.find(session[:user_id])
+    @station = Station.all
+    # figure this out
+    @selection = Selection.new(params:user_id, station_id)
   end
 
-  def show
-  end
-
-
-  def new
-    @selection = Selection.new
-  end
-
-  def end
-  end
-
-  def create
-    station = Station.find(params[:id])
-    Selection.find_or_create_by(user_id: current_user.id, station_id: station.id)
-    redirect_to user_selections_path
-  end
 
   def destroy
-    Selection.find(params[:id]).destroy
-    redirect_to user_selections_path
+
   end
 
-  private
 
-  # def selection_params
-  #   params.require(:station).permit(:id)
-  # end
+
 
 end
