@@ -6,12 +6,12 @@
 </p>
 
 <p>
-  <strong>Location name:</strong>
-  <%= @station.location_name %>
+  <strong>Description:</strong>
+  <%= @station.description %>
 </p>
 
-<span>@forecast</span>
 
 
 <%= link_to 'Edit', edit_station_path(@station) %> |
-<%= link_to 'Back', stations_path %>
+<%= link_to 'Back', stations_path %> |
+<%= link_to 'Delete', station_path, {method: :delete} %>

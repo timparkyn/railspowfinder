@@ -2,15 +2,14 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   attr_accessor :stations
-  include StationsHelper
+
 
   def index
-    @stations = current_user.stations
-    get_forecast(@stations)
-    @unselected_stations = Station.all - @stations
+    @stations = Station.all
   end
 
   def show
+    @station = Station.find(params[:id])
   end
 
 
@@ -20,12 +19,13 @@ class StationsController < ApplicationController
 
 
   def edit
+    @station = Station.find(params[:id])
   end
 
   def create
-    @station = Station.new
-
     respond_to do |format|
+      @station = Station.new(station_params)
+      puts @station.inspect
       if @station.save
         format.html { redirect_to @station, notice: 'Station was successfully created.' }
         format.json { render :show, status: :created, location: @station }
@@ -36,8 +36,7 @@ class StationsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /stations/1
-  # PATCH/PUT /stations/1.json
+
   def update
     respond_to do |format|
       if @station.update(station_params)
@@ -50,10 +49,9 @@ class StationsController < ApplicationController
     end
   end
 
-  # DELETE /stations/1
-  # DELETE /stations/1.json
+
   def destroy
-    @station.destroy
+    Station.find(params[:id]).destroy
     respond_to do |format|
       format.html { redirect_to stations_url, notice: 'Station was successfully destroyed.' }
       format.json { head :no_content }
@@ -68,6 +66,6 @@ class StationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params
-      params.require(:station).permit(:code, :location_name)
+      params.require(:station).permit(:code, :description)
     end
 end

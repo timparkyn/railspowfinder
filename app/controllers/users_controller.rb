@@ -40,10 +40,10 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-  def selections
-    @user = User.find(params[:id])
-    render 'stations'
-  end
+  # def selections
+  #   @user = User.find(params[:id])
+  #   render 'stations'
+  # end
 
   private
 

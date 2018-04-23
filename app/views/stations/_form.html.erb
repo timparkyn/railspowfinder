@@ -13,15 +13,19 @@
 
   <div class="field">
     <%= form.label :code %>
-    <%= form.text_field :code, id: :station_code %>
+    <%= form.text_field :code %>
   </div>
 
   <div class="field">
-    <%= form.label :location_name %>
-    <%= form.text_field :location_name, id: :station_location_name %>
+    <%= form.label :description %>
+    <%= form.text_field :description %>
   </div>
 
   <div class="actions">
     <%= form.submit %>
   </div>
 <% end %>
+
+
+<!-- id: :station_code
+id: :station_location_name -->
