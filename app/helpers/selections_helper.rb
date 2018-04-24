@@ -5,7 +5,7 @@ module SelectionsHelper
 
   def get_forecast(selections)
 
-    w_api = Wunderground.new("dda1e42fba07eb1c")
+    w_api = Wunderground.new(ENV["WUNDERGROUND_API_KEY"])
 
     # user forecast is an array of forecasts
     selections.each do |selection|

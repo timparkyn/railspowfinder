@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   resources :users do
     resources :selections
-    # resources :stations, only: [:index]
   end
 
   resources :stations do
