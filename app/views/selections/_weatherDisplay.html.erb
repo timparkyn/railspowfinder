@@ -2,7 +2,7 @@
   <% @forecasts.each do |fcast| %>
 
     <div class="card card-body forecastBox col-md-5 col-sm-5 col-xs-4">
-      <%= button_to('Remove', user_selection_path(:id => fcast[:selection_id]), {method: :delete} ) %>
+      <%= button_to('Remove', user_selection_path(:id => fcast[:station_id]), {method: :delete} ) %>
 
       <h5 class='card-title'>
         <%= fcast[:description] %><br />

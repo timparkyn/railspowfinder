@@ -12,8 +12,8 @@ module SelectionsHelper
       response = JSON.parse(raw_response.to_json, object_class: OpenStruct)
 
       forecast = {
-        selection_id: selection.id,  ## this is actually a station.id.  How to fix?
-        description: selection.code,
+        station_id: selection.id,
+        description: selection.description,
         observations: response.current_observation,
         elevation: response.current_observation.observation_location.elevation,
         daily_fx: {
