@@ -1,14 +1,11 @@
 <div class="card-deck">
   <% @forecasts.each do |fcast| %>
-
     <div class="card card-body forecastBox col-md-5 col-sm-5 col-xs-4">
-      <%= button_to('Remove', user_selection_path(:id => fcast[:station_id]), {method: :delete} ) %>
-
+       <%= button_to('Remove', user_selection_path(:id => fcast[:station_id]), {method: :delete}) %>
       <h5 class='card-title'>
         <%= fcast[:description] %><br />
         <%= fcast[:elevation] %>
       </h5>
-
       <div class="card-text small">
         <%= (fcast[:observations].observation_time_rfc822) %><br />
         <span>Temp: <%= fcast[:observations].temp_f %>°F</span><br />
@@ -34,15 +31,13 @@
               <th><%= daily_fx[:day] %></th>
               <td><%= daily_fx[:pop] %></td>
               <td><%= daily_fx[:qpf] %></td>
-              <td><%= daily_fx[:snow_in]  %></td>
-              <td><%= daily_fx[:max_wind_mph]  %></td>
+              <td><%= daily_fx[:snow_in] %></td>
+              <td><%= daily_fx[:max_wind_mph] %></td>
             </tr>
           <% end %>
         </table>
       </div>
     </div>
   <% end %>
-
 </div>
-
 <br /><br /><br />

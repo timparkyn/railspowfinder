@@ -12,11 +12,9 @@ class StationsController < ApplicationController
   def show
   end
 
-
   def new
     @station = Station.new
   end
-
 
   def edit
   end
@@ -60,10 +58,6 @@ class StationsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_station
-      @station = Station.find(params[:id])
-    end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def station_params

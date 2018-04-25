@@ -7,7 +7,7 @@ module SelectionsHelper
     w_api = Wunderground.new(ENV["WUNDERGROUND_API_KEY"])
 
     # user forecast is an array of forecasts
-    selections.each do |selection|
+    selections.map do |selection|
       raw_response = w_api.forecast_and_conditions_for("pws:#{selection.code}")
       response = JSON.parse(raw_response.to_json, object_class: OpenStruct)
 
@@ -17,7 +17,6 @@ module SelectionsHelper
         observations: response.current_observation,
         elevation: response.current_observation.observation_location.elevation
       }
-
       daily_forecasts = response.forecast.simpleforecast.forecastday
 
       forecast[:daily_fx] = daily_forecasts.map do |fx|
@@ -29,7 +28,10 @@ module SelectionsHelper
           max_wind_mph: fx.maxwind.mph
         }
       end
-      @forecasts.push(forecast)
+      forecast
     end
+
+    # puts '---------------------------'
+
   end
 end
