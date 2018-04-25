@@ -43,7 +43,7 @@ gem 'bcrypt', '~> 3.1.11'
 # Ruby wrapper for Wunderground APIs
 gem 'wunderground'
 
-#s Figaro to secure configuration values
+# Figaro to secure configuration values
 gem "figaro"
 
 group :development, :test do

@@ -29,15 +29,15 @@
                 <th>Wind</th>
               </tr>
           </thead>
-            <% (0..3).each do |n| %>
-              <tr>
-                <th><%= fcast[:daily_fx][:day][n] %></th>
-                <td><%= fcast[:daily_fx][:pop][n] %></td>
-                <td><%= fcast[:daily_fx][:qpf][n] %></td>
-                <td><%= fcast[:daily_fx][:snow_in][n]  %></td>
-                <td><%= fcast[:daily_fx][:max_wind_mph][n]  %></td>
-              </tr>
-            <% end %>
+          <% fcast[:daily_fx].each do |daily_fx| %>
+            <tr>
+              <th><%= daily_fx[:day] %></th>
+              <td><%= daily_fx[:pop] %></td>
+              <td><%= daily_fx[:qpf] %></td>
+              <td><%= daily_fx[:snow_in]  %></td>
+              <td><%= daily_fx[:max_wind_mph]  %></td>
+            </tr>
+          <% end %>
         </table>
       </div>
     </div>
