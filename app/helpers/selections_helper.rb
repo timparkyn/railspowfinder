@@ -1,6 +1,3 @@
-require 'json'
-require 'ostruct'
-
 module SelectionsHelper
 
   def get_forecast(selections)

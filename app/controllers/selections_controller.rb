@@ -1,5 +1,3 @@
-include SelectionsHelper
-
 class SelectionsController < ApplicationController
 
   def index
@@ -16,25 +14,11 @@ class SelectionsController < ApplicationController
   end
 
 
-  def new
-    @selection = Selection.new
-  end
-
-  def end
-  end
-
-  def create
-    station = Station.find(params[:id])
-    Selection.find_or_create_by(user_id: current_user.id, station_id: station.id)
-    redirect_to user_selections_path
-  end
-
   def destroy
-    Selection.find(params[:id]).destroy
-    redirect_to user_selections_path
+
   end
 
-  private
+
 
   # FIXME  review and fix as needed
   # def selection_params
