@@ -3,12 +3,10 @@ include SelectionsHelper
 class SelectionsController < ApplicationController
 
   def index
-    #provides an array of station objects
-    @selections = current_user.stations
+    @selections = current_user.stations    #provides an array of station objects
     @forecasts = []
     get_forecast(@selections)
-    # updates list of available stations for user
-    @unselected_stations = Station.all - @selections
+    @unselected_stations = Station.all - @selections # updates list of available stations for user
   end
 
   def show
@@ -25,7 +23,7 @@ class SelectionsController < ApplicationController
    end
 
    def destroy
-     Selection.find(params[:id]).destroy
+     Selection.find_by(params[:station_id]).destroy
      redirect_to user_selections_path
    end
 

@@ -3,14 +3,10 @@ class StationsController < ApplicationController
 
   attr_accessor :stations
 
-  # FIXME restrict controller for Admin only
+  # FIXME: restrict controller for Admin only
 
   def index
     @stations = current_user.stations
-
-    puts '*' * 10
-    puts @stations
-    get_forecast(@stations)
   end
 
   def show

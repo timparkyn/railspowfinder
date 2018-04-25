@@ -4,7 +4,6 @@ require 'ostruct'
 module SelectionsHelper
 
   def get_forecast(selections)
-
     w_api = Wunderground.new(ENV["WUNDERGROUND_API_KEY"])
 
     # user forecast is an array of forecasts
@@ -13,7 +12,7 @@ module SelectionsHelper
       response = JSON.parse(raw_response.to_json, object_class: OpenStruct)
 
       forecast = {
-        selection_id: selection.id,
+        selection_id: selection.id,  ## this is actually a station.id.  How to fix?
         description: selection.code,
         observations: response.current_observation,
         elevation: response.current_observation.observation_location.elevation,
