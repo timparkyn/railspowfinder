@@ -1,3 +1,5 @@
+include SelectionsHelper
+
 class SelectionsController < ApplicationController
 
   def index
