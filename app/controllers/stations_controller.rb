@@ -2,13 +2,12 @@ class StationsController < ApplicationController
   before_action :set_station, only: [:show, :edit, :update, :destroy]
 
   attr_accessor :stations
-  include StationsHelper
 
   # FIXME restrict controller for Admin only
 
   def index
     @stations = current_user.stations
-    
+
     puts '*' * 10
     puts @stations
     get_forecast(@stations)
