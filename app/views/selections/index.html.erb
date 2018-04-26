@@ -6,5 +6,7 @@
   <hr />
   <%= render 'stationList' %>
   <hr />
-  <%= render 'weatherDisplay' %>
+  <% if @forecasts %>
+    <%= render 'weatherDisplay' %>
+  <% end %>
 </div>
