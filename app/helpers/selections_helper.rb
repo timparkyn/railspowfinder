@@ -2,7 +2,6 @@ require 'json'
 require 'ostruct'
 
 module SelectionsHelper
-
   def get_forecast(selections)
     w_api = Wunderground.new(ENV["WUNDERGROUND_API_KEY"])
 
@@ -23,21 +22,18 @@ module SelectionsHelper
           :precip_1hr => response.current_observation.precip_1hr_in
         }
       }
-      daily_forecasts = response.forecast.simpleforecast.forecastday
 
+      daily_forecasts = response.forecast.simpleforecast.forecastday
       forecast[:daily_fx] = daily_forecasts.map do |fx|
         {
-          day: fx.date.weekday_short,
-          pop: fx.pop,
-          qpf: fx.qpf_allday.in,
-          snow_in: fx.snow_allday.in,
-          max_wind_mph: fx.maxwind.mph
+          :day => fx.date.weekday_short,
+          :pop => fx.pop,
+          :qpf => fx.qpf_allday.in,
+          :snow_in => fx.snow_allday.in,
+          :max_wind_mph => fx.maxwind.mph
         }
       end
       forecast
     end
-
-    # puts '---------------------------'
-
   end
 end
