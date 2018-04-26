@@ -2,7 +2,8 @@
   <% @forecasts.each do |fcast| %>
     <% if fcast %>
       <div class="card card-body forecastBox col-md-5 col-sm-5 col-xs-4">
-         <%= button_to('Remove', user_selection_path(:id => fcast[:station_id]), {method: :delete}) %>
+         <%= button_to('Remove',
+           user_selection_path(:id => fcast[:station_id]), {method: :delete}) %>
         <h5 class='card-title'>
           <%= fcast[:description] %><br />
           <%= fcast[:elevation] %>
@@ -11,7 +12,8 @@
           <%= fcast[:observations][:time]%><br />
           <span>Temp: <%= fcast[:observations][:temp] %>°F</span><br />
           <span>Winds: <%= fcast[:observations][:wind] %></span><br />
-          <span>Precip (today/1hr): <%= fcast[:observations][:precip_today] %></span>
+          <span>Precip (today/1hr): <%= fcast[:observations][:precip_today] %>
+          </span>
           <span><%= fcast[:observations][:precip_1hr] %></span><br />
         </div>
           <br />

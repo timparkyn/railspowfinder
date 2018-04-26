@@ -15,7 +15,8 @@ module SelectionsHelper
         forecast = {
           :station_id => selection.id,
           :description => selection.description,
-          :elevation => response.current_observation.observation_location.elevation,
+          :elevation =>
+            response.current_observation.observation_location.elevation,
           :observations => {
             :time => response.current_observation.observation_time_rfc822,
             :temp => response.current_observation.temp_f,

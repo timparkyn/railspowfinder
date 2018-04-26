@@ -15,7 +15,8 @@ class SelectionsController < ApplicationController
 
   def create
      station = Station.find(params[:id])
-     Selection.find_or_create_by(user_id: current_user.id, station_id: station.id)
+     Selection.find_or_create_by(user_id: current_user.id,
+                              station_id: station.id)
      redirect_to user_selections_path
   end
 
