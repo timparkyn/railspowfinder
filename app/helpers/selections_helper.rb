@@ -12,10 +12,16 @@ module SelectionsHelper
       response = JSON.parse(raw_response.to_json, object_class: OpenStruct)
 
       forecast = {
-        station_id: selection.id,
-        description: selection.description,
-        observations: response.current_observation,
-        elevation: response.current_observation.observation_location.elevation
+        :station_id =>selection.id,
+        :description => selection.description,
+        :elevation => response.current_observation.observation_location.elevation,
+        :observations => {
+          :time => response.current_observation.observation_time_rfc822,
+          :temp => response.current_observation.temp_f,
+          :wind => response.current_observation.wind_string,
+          :precip_today => response.current_observation.precip_today_in,
+          :precip_1hr => response.current_observation.precip_1hr_in
+        }
       }
       daily_forecasts = response.forecast.simpleforecast.forecastday
 

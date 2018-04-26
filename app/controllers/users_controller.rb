@@ -1,5 +1,4 @@
 class UsersController < ApplicationController
-
   # FIXME: restrict for admin only
   def index
     @user = User.all
@@ -7,15 +6,11 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    # @stations = Station.all
-
   end
-
 
   def new
     @user = User.new
   end
-
 
   def create
     @user = User.new(user_params)
@@ -25,7 +20,6 @@ class UsersController < ApplicationController
       render 'new'
     end
   end
-
 
   def edit
     @user = User.find(params[:id])
@@ -47,22 +41,16 @@ class UsersController < ApplicationController
     redirect_to users_url
   end
 
-
   def selections
     @user = User.find(params[:id])
     render 'stations'
   end
 
-
-
   private
 
     def user_params
-      params.require(:user).permit(:name, :email, :password, :password_confirmation)
+      params.require(:user)
+        .permit(:name, :email, :password, :password_confirmation)
       params.require(:user).permit(:date, selections: [])
     end
-
-
-
-
 end

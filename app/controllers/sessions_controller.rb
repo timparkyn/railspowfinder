@@ -1,4 +1,10 @@
 class SessionsController < ApplicationController
+  def index
+  end
+
+  def show
+  end
+
   def new
   end
 
@@ -11,6 +17,9 @@ class SessionsController < ApplicationController
       flash.now[:danger] = 'Invalid email/password combination'
       render 'new'
     end
+  end
+
+  def edit
   end
 
   def destroy

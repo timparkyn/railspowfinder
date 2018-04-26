@@ -7,11 +7,11 @@
         <%= fcast[:elevation] %>
       </h5>
       <div class="card-text small">
-        <%= (fcast[:observations].observation_time_rfc822) %><br />
-        <span>Temp: <%= fcast[:observations].temp_f %>°F</span><br />
-        <span>Winds: <%= fcast[:observations].wind_string %></span><br />
-        <span>Precip (today/1hr): <%= fcast[:observations].precip_today_in %></span>
-        <span><%= fcast[:observations].precip_1hr_in %></span><br />
+        <%= fcast[:observations][:time]%><br />
+        <span>Temp: <%= fcast[:observations][:temp] %>°F</span><br />
+        <span>Winds: <%= fcast[:observations][:wind] %></span><br />
+        <span>Precip (today/1hr): <%= fcast[:observations][:precip_today] %></span>
+        <span><%= fcast[:observations][:precip_1hr] %></span><br />
       </div>
         <br />
         <div class="table-responsive-sm">
