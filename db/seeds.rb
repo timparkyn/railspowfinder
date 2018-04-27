@@ -25,7 +25,7 @@ end
 
 
 user_list = [
-  [ 'psy', 'psy@dog.net', 'woofwoof', 'woofwoof']
+  [ 'psy', 'psy@dog.net', 'woofwoof', 'woofwoof'],
   [ 'CyCy', 'CyCy@dog.net', 'woofwoof', 'woofwoof']
 ]
 
