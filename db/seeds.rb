@@ -13,9 +13,9 @@ station_list = [
   [ 'KCAOAKLA40', 'Oakland Hilltop' ],
   ['KCAKIRKW4',	'Kirkwood - Valley'],
   ['KCATRUCK151'	'Truckee - Skislope Way'],
-  ['KCATRUCK149'	'Northstar - Martis Camp'],
-  ['KNVGLENB14', 'Heavenly - Kingsbury Estates']
-  ['KCASOUTH70', 'Heavenly - Montgomery Estates']
+  ['KCATRUCK149',	'Northstar - Martis Camp'],
+  ['KNVGLENB14', 'Heavenly - Kingsbury Estates'],
+  ['KCASOUTH70', 'Heavenly - Montgomery Estates'],
   ['KCATWINB4', 'Sierra at Tahoe']
 ]
 
