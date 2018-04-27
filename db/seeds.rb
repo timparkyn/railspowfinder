@@ -9,13 +9,18 @@
 
 
 station_list = [
-  [ "KCASQUAW9", "Squaw Valley base" ],
-  [ "KCAOAKLA40", "Oakland Hilltop" ]
-
+  [ 'KCASQUAW9', 'Squaw Valley - Village Center' ],
+  [ 'KCAOAKLA40', 'Oakland Hilltop' ],
+  ['KCAKIRKW4',	'Kirkwood - Valley'],
+  ['KCATRUCK151'	'Truckee - Skislope Way'],
+  ['KCATRUCK149'	'Northstar - Martis Camp'],
+  ['KNVGLENB14', 'Heavenly - Kingsbury Estates']
+  ['KCASOUTH70', 'Heavenly - Montgomery Estates']
+  ['KCATWINB4', 'Sierra at Tahoe']
 ]
 
 station_list.each do |code, name|
-  Station.create( code: code, name: name )
+  Station.create( code: code, description: name )
 end
 
 
