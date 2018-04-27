@@ -1,0 +1,12 @@
+<p id="notice"><%= notice %></p>
+
+<div class='container'>
+  <h1>Selections Dashboard</h1>
+  <h3 class='center'><%= current_user.email %></h3>
+  <hr />
+  <%= render 'stationList' %>
+  <hr />
+  <% if @forecasts %>
+    <%= render 'weatherDisplay' %>
+  <% end %>
+</div>

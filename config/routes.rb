@@ -21,11 +21,10 @@ Rails.application.routes.draw do
 
 
   resources :users do
-    member do
-      get :selections
-    end
+    resources :selections
+  end
 
-    resources :stations, only: [:index]
+  resources :stations do
   end
 
 
