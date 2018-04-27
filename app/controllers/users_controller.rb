@@ -1,11 +1,12 @@
 class UsersController < ApplicationController
+  # FIXME: restrict for admin only
+  def index
+    @user = User.all
+  end
 
   def show
     @user = User.find(params[:id])
-    # @stations = Station.all
-
   end
-
 
   def new
     @user = User.new
@@ -27,7 +28,7 @@ class UsersController < ApplicationController
   def update
     @user = User.find(params[:id])
     if @user.update_attributes(user_params)
-      flash[:success] = "Info updated."
+      flash[:success] = 'Info updated.'
       redirect_to @user
     else
       render 'edit'
@@ -36,7 +37,7 @@ class UsersController < ApplicationController
 
   def destroy
     User.find(params[:id]).destroy
-    flash[:danger] = "User deleted"
+    flash[:danger] = 'User deleted'
     redirect_to users_url
   end
 
@@ -47,9 +48,9 @@ class UsersController < ApplicationController
 
   private
 
-  def user_params
-    params.require(:user).permit(:name, :email, :password, :password_confirmation)
-    params.require(:user).permit(:date, selections: [])
-  end
-
+    def user_params
+      params.require(:user)
+        .permit(:name, :email, :password, :password_confirmation)
+      params.require(:user).permit(:date, selections: [])
+    end
 end

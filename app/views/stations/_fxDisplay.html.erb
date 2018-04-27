@@ -1,9 +1,0 @@
-<% (0..5).each do |n|%>
-  <div class='iconWindow'>
-    <span> <%= forecast['dailyFx']['day'][n] %>%</span><br />
-    <span>POP: <%= forecast['dailyFx']['day'][n] %>%</span><br />
-    <span>QPF: <%= forecast['dailyFx']['qpf'][n] %></span><br />
-    <span>QSF: <%= forecast['dailyFx']['snowIn'][n]  %></span>
-    <span>QSF: <%= forecast['dailyFx']['maxwindMph'][n]  %></span>
-  </div>
-<% end %>

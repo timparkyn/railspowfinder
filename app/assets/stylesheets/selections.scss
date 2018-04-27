@@ -1,3 +1,26 @@
 // Place all the styles related to the Selections controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+form .button:hover{
+  background-color: #899ab1;
+}
+
+.forecastBox{
+  border: 2px solid black;
+  margin: 15px;
+  margin-bottom: 50px;
+  padding: 10px;
+}
+
+form .button-group-vertical {
+  margin-bottom: 10px !important;
+}
+
+
+.list-group-item:hover {
+  background-color: #eee;
+}
+
+.stn-button:hover{
+  background-color: #595959;
+}
