@@ -9,10 +9,10 @@
 
 
 station_list = [
-  [ 'KCASQUAW9', 'Squaw Valley - Village Center' ],
-  [ 'KCAOAKLA40', 'Oakland Hilltop' ],
+  ['KCASQUAW9', 'Squaw Valley - Village Center'],
+  ['KCAOAKLA40', 'Oakland Hilltop'],
   ['KCAKIRKW4',	'Kirkwood - Valley'],
-  ['KCATRUCK151'	'Truckee - Skislope Way'],
+  ['KCATRUCK151',	'Truckee - Skislope Way'],
   ['KCATRUCK149',	'Northstar - Martis Camp'],
   ['KNVGLENB14', 'Heavenly - Kingsbury Estates'],
   ['KCASOUTH70', 'Heavenly - Montgomery Estates'],
