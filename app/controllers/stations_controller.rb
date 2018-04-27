@@ -42,10 +42,6 @@ class StationsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> selections-controller
   def update
     respond_to do |format|
       if @station.update(station_params)
@@ -60,10 +56,6 @@ class StationsController < ApplicationController
     end
   end
 
-<<<<<<< HEAD
-
-=======
->>>>>>> selections-controller
   def destroy
     Station.find(params[:id]).destroy
     respond_to do |format|
@@ -75,16 +67,10 @@ class StationsController < ApplicationController
 
   private
 
-<<<<<<< HEAD
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def station_params
-      params.require(:station).permit(:code, :description)
-    end
-=======
   # Never trust parameters from the scary internet,
   # only allow the white list through.
   def station_params
     params.require(:station).permit(:code, :location_name)
   end
->>>>>>> selections-controller
+
 end
