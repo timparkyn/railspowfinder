@@ -1,5 +1,6 @@
 class SelectionsController < ApplicationController
   include SelectionsHelper
+  include SessionsHelper
   def index
     @selections = current_user.stations # provides an array of station objects
     @forecasts = get_forecast(@selections)

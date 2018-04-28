@@ -15,7 +15,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-      redirect_to user_selections_path
+    # FIXME : check current_user issue; login on user#create
+      session[:user_id] = @user.id
+      redirect_to user_selections_path(@user)
     else
       render 'new'
     end
