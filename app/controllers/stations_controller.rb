@@ -1,6 +1,6 @@
 class StationsController < ApplicationController
   attr_accessor :stations
-  before_action :admin_user, only: [:index, , :show, :new, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :show, :new, :edit, :update, :destroy]
 
   def index
     @stations = Station.all

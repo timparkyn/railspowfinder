@@ -1,11 +1,10 @@
 class UsersController < ApplicationController
   include SessionsHelper
 
-  before_action :logged_in_user, only: [:index, :edit, :update, :destroy]
+  before_action :admin_user, only: [:index, :show, :edit, :update, :destroy]
+  before_action :logged_in_user, only: [:show, :edit, :update, :destroy]
   before_action :correct_user,   only: [:edit, :update]
-  before_action :admin_user,     only: :destroy
 
-  attr_accessor :admin_user, :logged_in_user
 
   def index
     @users = User.all
@@ -21,7 +20,6 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-
   end
 
   def create
@@ -59,7 +57,7 @@ class UsersController < ApplicationController
   end
 
   private
-
+    # FIXME: pathing isn't correct
     def user_params
       params.require(:user)
         .permit(:name, :email, :password, :password_confirmation, stations_attributes: [:id, :user_id, :_destroy, selection_ids: []])
