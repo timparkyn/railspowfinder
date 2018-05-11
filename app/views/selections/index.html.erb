@@ -1,16 +1,16 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Weather Dashboard</h2>
-<h5 class='center'><%= current_user.email %></h5>
-<div class='fluid-container selectionContainer '>
+
+<div class='row selectionContainer '>
   <% if @forecasts %>
-  <div class='row'>
-    <div class='col-sm-4'></div>
-    <div class='col-sm-4 ForecastContainer'>
-          <%= render 'weatherDisplay' %>
+
+    <!-- <div class='col-sm-4'></div> -->
+    <div class='col-sm-12 ForecastContainer'>
+      <h1>Dashboard</h1>
+      <%= render 'weatherDisplay' %>
     </div>
-    <div class='col-sm-4'></div>
-  </div>
+    <!-- <div class='col-sm-4'></div> -->
+
   <% end %>
 
 </div>
