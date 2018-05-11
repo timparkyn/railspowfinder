@@ -1,9 +1,9 @@
-<div class="btn-group-vertical ">
+ <div class="btn-group-vertical ">  <!--buttonNav-->
   <% @unselected_stations.each do |unselected_station| %>
     <div>
         <%= button_to(unselected_station.description,
           user_selections_path(id: unselected_station.id),
-          {class: 'btn btn-primary btn-block'}) %>
+          {class: 'btn btn-primary btn-sm btn-block'}) %>
     </div>
   <% end %>
 </div>

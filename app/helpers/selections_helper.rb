@@ -14,11 +14,12 @@ module SelectionsHelper
         :elevation =>
           response.current_observation.observation_location.elevation,
         :observations => {
-          :time => response.current_observation.observation_time_rfc822,
+          :time => response.current_observation.observation_time_rfc822[0..-6],
           :temp => response.current_observation.temp_f,
           :wind => response.current_observation.wind_string,
           :precip_today => [response.current_observation.precip_today_in.to_f, 0].max,
-          :precip_1hr => [response.current_observation.precip_1hr_in.to_f, 0].max
+          :precip_1hr => [response.current_observation.precip_1hr_in.to_f, 0].max,
+          :icon_url => response.current_observation.icon_url
         }
       }
 

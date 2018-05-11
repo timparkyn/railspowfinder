@@ -2,8 +2,8 @@ class SelectionsController < ApplicationController
   include SelectionsHelper
   include SessionsHelper
   def index
-    @selections = current_user.stations # provides an array of station objects
-    @forecasts = get_forecast(@selections)
+    @selections = Selection.all # current_user.stations # provides an array of station objects
+    @forecasts = get_forecast(current_user.stations) # @selections
     @unselected_stations = Station.all - @selections
   end
 
@@ -19,6 +19,13 @@ class SelectionsController < ApplicationController
                               station_id: params[:id])
      redirect_to user_selections_path
   end
+
+  def edit
+    @selections = Selection.all # current_user.stations # provides an array of station objects
+    @forecasts = get_forecast(current_user.stations) # @selections
+    @unselected_stations = Station.all - @selections
+  end
+
 
  def destroy
    Selection.find_by(user_id: current_user.id,

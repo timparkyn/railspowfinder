@@ -1,9 +1,9 @@
 class StationsController < ApplicationController
-  before_action :set_station, only: [:show, :edit, :update, :destroy]
   attr_accessor :stations
-  # FIXME: restrict controller for Admin only
+  before_action :admin_user, only: [:index, , :show, :new, :edit, :update, :destroy]
+
   def index
-    @stations = current_user.stations
+    @stations = Station.all
   end
 
   def show
@@ -71,6 +71,10 @@ class StationsController < ApplicationController
   # only allow the white list through.
   def station_params
     params.require(:station).permit(:code, :location_name)
+  end
+
+  def admin_user
+    redirect_to(root_url) unless current_user.admin?
   end
 
 end

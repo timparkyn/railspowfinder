@@ -1,14 +1,19 @@
 <!DOCTYPE html>
-<html>
+<html lang='en'>
   <head>
     <title>Railspowfinder</title>
+    <meta charset='utm-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <%= favicon_link_tag asset_path('icon.png'), :rel => 'icon', :type =>  'image/png' %>
     <%= render 'layouts/rails_default' %>
     <%= render 'layouts/shim' %>
   </head>
   <body>
+    <div class='container'>
     <%= render 'layouts/header' %>
     <%= yield %>
     <%= debug(params) if Rails.env.development? %>
+  </div>
   </body>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.12/js/all.js" integrity="sha384-Voup2lBiiyZYkRto2XWqbzxHXwzcm4A5RfdfG6466bu5LqjwwrjXCMBQBLMWh7qR" crossorigin="anonymous"></script>
 </html>

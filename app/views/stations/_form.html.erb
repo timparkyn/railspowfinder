@@ -1,31 +1,28 @@
-<%= form_with(model: station, local: true) do |form| %>
-  <% if station.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(station.errors.count, "error") %> prohibited this station from being saved:</h2>
+<%= form_with(model: station, local: true ) do |form| %>
+<% if station.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(station.errors.count, "error") %> prohibited this station from being saved:</h2>
 
-      <ul>
-      <% station.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="field">
-    <%= form.label :code %>
-    <%= form.text_field :code %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
+    <ul>
+    <% station.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+    <% end %>
+    </ul>
   </div>
 <% end %>
 
+  <div class='col-md-12 form-inline '>
+    <div class="form-group">
+      <%= form.label :code %>
+      <%= form.text_field :code %>
+    </div>
 
-<!-- id: :station_code
-id: :station_location_name -->
+    <div class="form-group form-inline">
+      <%= form.label :description %>
+      <%= form.text_field :description %>
+    </div>
+  </div>
+
+    <%= form.submit class: 'btn btn-primary btn-sm' %>
+
+<% end %>

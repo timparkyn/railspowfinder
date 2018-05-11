@@ -1,0 +1,8 @@
+<%= form_for(@selections) do |f| %>
+  <% @stations.each do |station| %>
+    <%= check_box_tag "selection[station_ids][]", station.id, f.object.stations.include?(station) %>
+    <%= station.description %><br />
+  <% end %>
+
+<%= f.submit " Choose ", class: "btn btn-primary" %>
+<% end %>
