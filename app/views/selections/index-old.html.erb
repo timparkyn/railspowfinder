@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<div class='row selectionContainer'>
+
+  <% if @forecasts %>
+    <div class='col-sm-12'>
+      <h1>Dashboard</h1>
+      <div class='col-sm-6'>
+        <%= render 'stationList-checkbox' %>
+      </div>
+      <div class='col-sm-6 ForecastContainer'>
+        <%= render 'weatherDisplay' %>
+      </div>
+    </div>
+  <% end %>
+
+</div>

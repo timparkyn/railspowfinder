@@ -40,8 +40,9 @@ class UsersController < ApplicationController
   end
 
   def update
+      # FIXME : How to manage user updates vs. selection updates
+
     @user = User.find(params[:id])
-    # FIXME : check current_user issue; login on user#create
     @user.attributes = {'station_ids' => []}.merge( user_params || {}) # params[:user]
     if @user.update_attributes(user_params)
       flash[:success] = 'Info updated.'
