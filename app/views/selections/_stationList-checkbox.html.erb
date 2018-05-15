@@ -1,8 +1,13 @@
-<%= form_for(@selections) do |f| %>
-  <% @stations.each do |station| %>
-    <%= check_box_tag "selection[station_ids][]", station.id, f.object.stations.include?(station) %>
-    <%= station.description %><br />
-  <% end %>
-
-<%= f.submit " Choose ", class: "btn btn-primary" %>
-<% end %>
+<div class='stnCheckbox'>
+  <div class='form-group checkbox'>
+    <%= form_for(@user) do |f| %>
+      <% Station.all.each do |station| %>
+        <div>
+          <%= check_box_tag :station_ids, station.id, @user.stations.include?(station), :name => 'user[station_ids][]' %>
+          <%= label_tag :station_ids, station.description %>
+        </div>
+      <% end %>
+      <%= submit_tag %>
+    <% end %>
+  </div>
+</div>

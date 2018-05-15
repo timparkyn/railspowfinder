@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     end
   end
 
-  def help
+  def about
   end
 
   def index

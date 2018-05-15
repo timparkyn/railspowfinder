@@ -2,9 +2,11 @@ class SelectionsController < ApplicationController
   include SelectionsHelper
   include SessionsHelper
   def index
-    @selections = Selection.all # current_user.stations # provides an array of station objects
+    @selections = current_user.stations # current_user.stations # provides an array of station objects
     @forecasts = get_forecast(current_user.stations) # @selections
-    @unselected_stations = Station.all - @selections
+    @stations = Station.all
+    @unselected_stations = @stations - @selections
+    @user = current_user
   end
 
   def show
@@ -21,17 +23,30 @@ class SelectionsController < ApplicationController
   end
 
   def edit
-    @selections = Selection.all # current_user.stations # provides an array of station objects
-    @forecasts = get_forecast(current_user.stations) # @selections
+    puts '&&&&&&&&&&&&&&&&&&&&&&&&&&'
+    @selections = current_user.stations # current_user.stations # provides an array of station objects
+    @stations = Station.all
     @unselected_stations = Station.all - @selections
+    puts @unselected_stations
+
   end
 
+  def update
+    @user = User.find(params[:id])
 
- def destroy
+    if @user.update_attributes(user_params)
+      flash[:success] = 'Info updated.'
+      redirect_to @selection
+    else
+      render 'user#show'
+    end
+  end
+
+  def destroy
    Selection.find_by(user_id: current_user.id,
                   station_id: params[:id]).destroy
    redirect_to user_selections_path
- end
+  end
 
   # FIXME:  review and fix as needed
   # def selection_params

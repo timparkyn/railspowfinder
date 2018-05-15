@@ -27,7 +27,7 @@ class UsersController < ApplicationController
     if @user.save
       session[:user_id] = @user.id
       flash[:success] = 'Welcome to Powfinder.'
-      redirect_to @user
+      redirect_to user_selections_path(user)
     else
       render 'new'
     end
@@ -36,16 +36,18 @@ class UsersController < ApplicationController
   def edit
     @user = User.find(params[:id])
     # FIXME: check this .attributes --- attempt to update selections through #user/show
-    @user.attributes = {'station_ids' => []}.merge(params[:user] || {})
+    # @user.attributes = {'station_ids' => []}.merge(params[:user] || {})
   end
 
   def update
     @user = User.find(params[:id])
     # FIXME : check current_user issue; login on user#create
+    @user.attributes = {'station_ids' => []}.merge( user_params || {}) # params[:user]
     if @user.update_attributes(user_params)
       flash[:success] = 'Info updated.'
-      redirect_to @user
+      redirect_to user_selections_path(user) # @user
     else
+      flash[:danger] = 'Denied.'
       render 'edit'
     end
   end
@@ -60,8 +62,8 @@ class UsersController < ApplicationController
     # FIXME: pathing isn't correct
     def user_params
       params.require(:user)
-        .permit(:name, :email, :password, :password_confirmation, stations_attributes: [:id, :user_id, :_destroy, selection_ids: []])
-      # params.require(:user).permit(:date, selections: [])
+        .permit(:name, :email, :password, :password_confirmation, :_destroy, station_ids: [] )
+      # station.id,
     end
 
     def logged_in_user

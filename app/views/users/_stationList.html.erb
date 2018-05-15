@@ -2,10 +2,10 @@
   <div class='form-group checkbox '>
     <%= form_for(@user) do |f| %>
       <% @stations.each do |station| %>
-      <div class='checkbox'>
-        <%= check_box_tag "user[selection_ids][]", station.id, f.object.stations.include?(station), class: 'input checkbox' %>
-        <%= station.description %>
-      </div>
+        <div class='checkbox'>
+          <%= check_box_tag "user[station_ids][]", station.id, f.object.stations.include?(station), class: 'input checkbox' %>
+          <%= station.description %>
+        </div>
       <% end %>
     <%= submit_tag %>
     <% end %>
@@ -15,9 +15,6 @@
 
 <!--  collection_check_boxes -->
 <!-- collection_check_boxes (station selection_ids, Station.all, :id, station.id) -->
-
-
-
 
 
 

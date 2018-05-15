@@ -70,11 +70,11 @@ class StationsController < ApplicationController
   # Never trust parameters from the scary internet,
   # only allow the white list through.
   def station_params
-    params.require(:station).permit(:code, :location_name)
+    params.require(:station).permit(:code, :description)
   end
 
   def admin_user
-    redirect_to(root_url) unless current_user.admin?
+    redirect_to(root_url) unless :admin_user # current_user.admin?
   end
 
 end
