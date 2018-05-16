@@ -13,9 +13,6 @@ class UsersController < ApplicationController
 
   def show
     @user = User.find(params[:id])
-    @stations = Station.all
-    @selections = current_user.stations # provides an array of station objects
-    @unselected_stations = Station.all - @selections
   end
 
   def new

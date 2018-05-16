@@ -23,19 +23,14 @@ class SelectionsController < ApplicationController
   end
 
   def edit
-    puts '&&&&&&&&&&&&&&&&&&&&&&&&&&'
-    @selections = current_user.stations # current_user.stations # provides an array of station objects
-    @stations = Station.all
-    @unselected_stations = Station.all - @selections
-    puts @unselected_stations
-
   end
 
   def update
     @user = User.find(params[:id])
-
-    if @user.update_attributes(user_params)
-      flash[:success] = 'Info updated.'
+    puts '**** hurray??? ****'
+    if @user.update_attributes(params)
+    # if @user.update_attributes(user_params)
+    #   flash[:success] = 'Info updated.'
       redirect_to @selection
     else
       render 'user#show'
