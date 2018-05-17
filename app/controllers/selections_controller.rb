@@ -27,7 +27,6 @@ class SelectionsController < ApplicationController
 
   def update
     @user = User.find(params[:id])
-    puts '**** hurray??? ****'
     if @user.update_attributes(params)
     # if @user.update_attributes(user_params)
     #   flash[:success] = 'Info updated.'
@@ -43,8 +42,4 @@ class SelectionsController < ApplicationController
    redirect_to user_selections_path
   end
 
-  # FIXME:  review and fix as needed
-  # def selection_params
-  #   params.require(:station).permit(:id)
-  # end
 end

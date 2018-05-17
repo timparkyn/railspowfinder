@@ -43,10 +43,12 @@ class UsersController < ApplicationController
     @user.attributes = {'station_ids' => []}.merge( user_params || {}) # params[:user]
     if @user.update_attributes(user_params)
       flash[:success] = 'Info updated.'
-      redirect_to user_selections_path(user) # @user
+      puts '******* info updated *********'
+      redirect_to user_selections_path(@user) # (user) # @user
     else
       flash[:danger] = 'Denied.'
-      render 'edit'
+      puts '********* denied *********'
+      redirect_to user_selections_path(@user) # render 'edit'
     end
   end
 
