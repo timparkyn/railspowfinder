@@ -1,12 +1,52 @@
 <p id="notice"><%= notice %></p>
 
-<div class='container'>
-  <h1>Selections Dashboard</h1>
-  <h3 class='center'><%= current_user.email %></h3>
-  <hr />
-  <%= render 'stationList' %>
-  <hr />
+<div class='row selectionContainer'>
+
   <% if @forecasts %>
-    <%= render 'weatherDisplay' %>
+    <div class='col-sm-12'>
+      <h1>Dashboard</h1>
+      <div class='col-sm-3'>
+      </div>
+      <div class='col-sm-6 ForecastContainer'>
+        <center><button type="button" class="btn btn-primary btn-md center" data-toggle="modal" data-target="#stationModal">
+          Change Stations
+        </button></center>
+        <%= render 'weatherDisplay' %>
+      </div>
+      <div class='col-sm-3'>
+      </div>
+    </div>
   <% end %>
+
+</div>
+
+<!-- Station Modal -->
+<div class="modal fade" id="stationModal" tabindex="-1" role="dialog" aria-labelledby="Station Selection">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <%= form_for(@user) do |f| %>
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <h4 class="modal-title" id="Station Selection">Change Stations</h4>
+        </div>
+        <div class="modal-body">
+          <div class='stnCheckbox'>
+            <div class='form-group checkbox'>
+                <% Station.all.each do |station| %>
+                  <div>
+                    <%= check_box_tag :station_ids, station.id, @user.stations.include?(station), :name => 'user[station_ids][]' %>
+                    <%= label_tag :station_ids, station.description %>
+                  </div>
+                <% end %>
+
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          <%= submit_tag "Update", class: "btn btn-primary" %>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
